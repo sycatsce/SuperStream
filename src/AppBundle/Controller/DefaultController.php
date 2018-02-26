@@ -18,4 +18,13 @@ class DefaultController extends Controller
             'base_dir' => realpath($this->getParameter('kernel.project_dir')).DIRECTORY_SEPARATOR,
         ]);
     }
+
+    /**
+     * @Route("/netflix", name="homepage")
+     */
+    public function netflixAction(Request $request)
+    {
+        // replace this example code with whatever you need
+        return $this->render('default/test.html.twig');
+    }
 }
