@@ -64,9 +64,9 @@ class Film
     private $image;
 
     /**
-     * @ORM\OneToMany(targetEntity="AppBundle\Entity\Comments", mappedBy="id")
+     * @ORM\OneToMany(targetEntity="AppBundle\Entity\Comments", mappedBy="film")
      */
-    private $id_comments;
+    private $comments;
 
     
     /**

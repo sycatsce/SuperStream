@@ -15,7 +15,6 @@ class Comments
     /**
      * @var int
      *
-     * @ORM\ManyToOne(targetEntity="AppBundle\Entity\Film", inversedBy="id_comments")
      * @ORM\Column(name="id", type="integer")
      * @ORM\Id
      * @ORM\GeneratedValue(strategy="AUTO")
@@ -36,6 +35,10 @@ class Comments
      */
     private $postedAt;
 
+    /**
+     * @ORM\ManyToOne(targetEntity="AppBundle\Entity\Film", inversedBy="comments")
+     */
+    private $film;
 
     /**
      * Get id
@@ -95,4 +98,3 @@ class Comments
         return $this->postedAt;
     }
 }
-

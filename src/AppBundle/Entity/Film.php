@@ -43,13 +43,6 @@ class Film
     private $releaseDate;
 
     /**
-     * @var int
-     *
-     * @ORM\Column(name="category", type="integer")
-     */
-    private $category;
-
-    /**
      * @var string
      *
      * @ORM\Column(name="description", type="text")
@@ -64,9 +57,9 @@ class Film
     private $image;
 
     /**
-     * @ORM\OneToMany(targetEntity="AppBundle\Entity\Comments", mappedBy="id")
+     * @ORM\OneToMany(targetEntity="AppBundle\Entity\Comments", mappedBy="film")
      */
-    private $id_comments;
+    private $comments;
 
     
     /**
@@ -152,30 +145,6 @@ class Film
     }
 
     /**
-     * Set category
-     *
-     * @param integer $category
-     *
-     * @return Film
-     */
-    public function setCategory($category)
-    {
-        $this->category = $category;
-
-        return $this;
-    }
-
-    /**
-     * Get category
-     *
-     * @return int
-     */
-    public function getCategory()
-    {
-        return $this->category;
-    }
-
-    /**
      * Set description
      *
      * @param string $description
@@ -227,40 +196,40 @@ class Film
      */
     public function __construct()
     {
-        $this->id_comments = new \Doctrine\Common\Collections\ArrayCollection();
+        $this->comments = new \Doctrine\Common\Collections\ArrayCollection();
     }
 
     /**
-     * Add idComment
+     * Add comment
      *
-     * @param \AppBundle\Entity\Comments $idComment
+     * @param \AppBundle\Entity\Comments $comment
      *
      * @return Film
      */
-    public function addIdComment(\AppBundle\Entity\Comments $idComment)
+    public function addComment(\AppBundle\Entity\Comments $comment)
     {
-        $this->id_comments[] = $idComment;
+        $this->comments[] = $comment;
 
         return $this;
     }
 
     /**
-     * Remove idComment
+     * Remove comment
      *
-     * @param \AppBundle\Entity\Comments $idComment
+     * @param \AppBundle\Entity\Comments $comment
      */
-    public function removeIdComment(\AppBundle\Entity\Comments $idComment)
+    public function removeComment(\AppBundle\Entity\Comments $comment)
     {
-        $this->id_comments->removeElement($idComment);
+        $this->comments->removeElement($comment);
     }
 
     /**
-     * Get idComments
+     * Get comments
      *
      * @return \Doctrine\Common\Collections\Collection
      */
-    public function getIdComments()
+    public function getComments()
     {
-        return $this->id_comments;
+        return $this->comments;
     }
 }

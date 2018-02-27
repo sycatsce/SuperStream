@@ -15,7 +15,6 @@ class Comments
     /**
      * @var int
      *
-     * @ORM\ManyToOne(targetEntity="AppBundle\Entity\Film", inversedBy="id_comments")
      * @ORM\Column(name="id", type="integer")
      * @ORM\Id
      * @ORM\GeneratedValue(strategy="AUTO")
@@ -36,6 +35,10 @@ class Comments
      */
     private $postedAt;
 
+    /**
+     * @ORM\ManyToOne(targetEntity="AppBundle\Entity\Film", inversedBy="comments")
+     */
+    private $film;
 
     /**
      * Get id
@@ -93,5 +96,29 @@ class Comments
     public function getPostedAt()
     {
         return $this->postedAt;
+    }
+
+    /**
+     * Set film
+     *
+     * @param \AppBundle\Entity\Film $film
+     *
+     * @return Comments
+     */
+    public function setFilm(\AppBundle\Entity\Film $film = null)
+    {
+        $this->film = $film;
+
+        return $this;
+    }
+
+    /**
+     * Get film
+     *
+     * @return \AppBundle\Entity\Film
+     */
+    public function getFilm()
+    {
+        return $this->film;
     }
 }
