@@ -222,45 +222,5 @@ class Film
     {
         return $this->image;
     }
-    /**
-     * Constructor
-     */
-    public function __construct()
-    {
-        $this->id_comments = new \Doctrine\Common\Collections\ArrayCollection();
-    }
-
-    /**
-     * Add idComment
-     *
-     * @param \AppBundle\Entity\Comments $idComment
-     *
-     * @return Film
-     */
-    public function addIdComment(\AppBundle\Entity\Comments $idComment)
-    {
-        $this->id_comments[] = $idComment;
-
-        return $this;
-    }
-
-    /**
-     * Remove idComment
-     *
-     * @param \AppBundle\Entity\Comments $idComment
-     */
-    public function removeIdComment(\AppBundle\Entity\Comments $idComment)
-    {
-        $this->id_comments->removeElement($idComment);
-    }
-
-    /**
-     * Get idComments
-     *
-     * @return \Doctrine\Common\Collections\Collection
-     */
-    public function getIdComments()
-    {
-        return $this->id_comments;
-    }
 }
+
