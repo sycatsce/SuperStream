@@ -25,6 +25,34 @@ class DefaultController extends Controller
     public function netflixAction(Request $request)
     {
         // replace this example code with whatever you need
-        return $this->render('default/test.html.twig');
+        return $this->render('default/accueil.html.twig');
+    }
+
+
+
+    /**
+     * @Route("/connexion", name="connexion")
+     */
+    public function connexionAction(Request $request)
+    {
+        // replace this example code with whatever you need
+        return $this->render('default/connexion.html.twig');
+    }
+
+    /**
+     * @Route("/inscription", name="project_add")
+     */
+    public function addInscriptionAction()
+    {
+        $project = new Project();
+        $form = $this->createFormBuilder($project)
+            ->add('name', TextType:: class)
+            ->add('description', TextareaType:: class)
+            ->add('completion', NumberType:: class)
+            ->add('save', SubmitType:: class, ['label' => 'Ajouter un projet'])
+            ->getForm();
+        return $this->render('project/inscription.html.twig', [
+            'form' => $form->createView()
+        ]);
     }
 }

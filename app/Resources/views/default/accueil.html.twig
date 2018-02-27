@@ -1,17 +1,3 @@
-<?php
-/**
- * Created by PhpStorm.
- * User: gonss
- * Date: 26/02/2018
- * Time: 12:49
- */
-
-<style src="{{ asset('Netflix/style.css') }}">
-
-
-
-
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -21,29 +7,24 @@
 
     <title>Movie Review</title>
 
-    <!-- Loading third party fonts -->
-    <link href="{{ asset('http://fonts.googleapis.com/css?family=Roboto:300,400,700|"') }}"  rel="stylesheet" type="text/css" />
-    <link href="{{ asset('fonts/font-awesome.min.css') }}"  rel="stylesheet" type="text/css" />
+    <link href="{{ 'http://fonts.googleapis.com/css?family=Roboto:300,400,700|'  }}" rel="stylesheet">
+    <link href="{{ asset('Netflix/fonts/font-awesome.min.css') }}" rel="stylesheet">
 
+    <link href="{{ asset('Netflix/style.css') }}" rel="stylesheet">
 
-    <script src="{{ asset('js/ie-support/html5.js') }}"></script>
-    <script src="{{ asset('js/ie-support/respond.js') }}"></script>
-
-
+    <script src="{{ asset('Netflix/js/ie-support/html5.js') }}"></script>
+    <script src="{{ asset('Netflix/js/ie-support/respond.js') }}"></script>
 
 </head>
-
-
 <body>
-
 
 <div id="site-content">
     <header class="site-header">
         <div class="container">
             <a href="index.html" id="branding">
-                <img src="images/logo.png" alt="" class="logo">
+                <img src="{{ asset('Netflix/images/logo.png') }}">
                 <div class="logo-copy">
-                    <h1 class="site-title">Company Name</h1>
+                    <h1 class="site-title">SUPERSTREAM</h1>
                     <small class="site-description">Tagline goes here</small>
                 </div>
             </a> <!-- #branding -->
@@ -51,10 +32,13 @@
             <div class="main-navigation">
                 <button type="button" class="menu-toggle"><i class="fa fa-bars"></i></button>
                 <ul class="menu">
-                    <li class="menu-item current-menu-item"><a href="index.html">Home</a></li>
-                    <li class="menu-item"><a href="about.html">About</a></li>
-                    <li class="menu-item"><a href="review.html">Movie reviews</a></li>
-                    <li class="menu-item"><a href="joinus.html">Join us</a></li>
+                    <li class="menu-item current-menu-item"><a href="index.html">Accueil</a></li>
+                    <li class="menu-item"><a href="about.html">A Propos</a></li>
+                    <li class="menu-item"><a href="review.html">Films</a></li>
+                    <li class="menu-item"><a href="review.html">Séries</a></li>
+                    <li class="menu-item"><a href="joinus.html">Rejoignez nous</a></li>
+                    <li class="menu-item"><a href="joinus.html">Inscription</a></li>
+                    <li class="menu-item"><a href="joinus.html">Connexion</a></li>
                     <li class="menu-item"><a href="contact.html">Contact</a></li>
                 </ul> <!-- .menu -->
 
@@ -87,12 +71,12 @@
                         <div class="row">
                             <div class="col-sm-6 col-md-12">
                                 <div class="latest-movie">
-                                    <a href="#"><img src="dummy/thumb-1.jpg" alt="Movie 1"></a>
+                                    <a href="#"><img src="{{ asset('Netflix/dummy/thumb-1.jpg') }}"></a>
                                 </div>
                             </div>
                             <div class="col-sm-6 col-md-12">
                                 <div class="latest-movie">
-                                    <a href="#"><img src="dummy/thumb-2.jpg" alt="Movie 2"></a>
+                                    <a href="#"><img src="{{ asset('Netflix/dummy/thumb-2.jpg') }}"></a>
                                 </div>
                             </div>
                         </div>
@@ -101,22 +85,22 @@
                 <div class="row">
                     <div class="col-sm-6 col-md-3">
                         <div class="latest-movie">
-                            <a href="#"><img src="dummy/thumb-3.jpg" alt="Movie 3"></a>
+                            <a href="#"><img src="{{ asset('Netflix/dummy/thumb-3.jpg') }}"></a>
                         </div>
                     </div>
                     <div class="col-sm-6 col-md-3">
                         <div class="latest-movie">
-                            <a href="#"><img src="dummy/thumb-4.jpg" alt="Movie 4"></a>
+                            <a href="#"><img src="{{ asset('Netflix/dummy/thumb-4.jpg') }}"></a>
                         </div>
                     </div>
                     <div class="col-sm-6 col-md-3">
                         <div class="latest-movie">
-                            <a href="#"><img src="dummy/thumb-5.jpg" alt="Movie 5"></a>
+                            <a href="#"><img src="{{ asset('Netflix/dummy/thumb-5.jpg') }}"></a>
                         </div>
                     </div>
                     <div class="col-sm-6 col-md-3">
                         <div class="latest-movie">
-                            <a href="#"><img src="dummy/thumb-6.jpg" alt="Movie 6"></a>
+                            <a href="#"><img src="{{ asset('Netflix/dummy/thumb-6.jpg') }}"></a>
                         </div>
                     </div>
                 </div> <!-- .row -->
@@ -262,12 +246,9 @@
 </div>
 <!-- Default snippet for navigation -->
 
-<script src="{{ asset('js/jquery-1.11.1.min.js') }}"></script>
-<script src="{{ asset('js/plugins.js') }}"></script>
-<script src="{{ asset('js/app.js') }}"></script>
-
-
+<script src="{{ asset('Netflix/js/jquery-1.11.1.min.js') }}"></script>
+<script src="{{ asset('Netflix/js/plugins.js') }}"></script>
+<script src="{{ asset('Netflix/js/app.js') }}"></script>
 
 </body>
-
 </html>
