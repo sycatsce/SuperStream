@@ -31,7 +31,7 @@ class DefaultController extends Controller
     }
 
     /**
-     * @Route("/netflix", name="homepage")
+     * @Route("/index", name="homepage")
      */
     public function netflixAction(Request $request)
     {
@@ -53,48 +53,20 @@ class DefaultController extends Controller
     }
 
     /**
-     * @Route("/inscription", name="project_add")
-     */
-    public function addInscriptionAction()
-    {
-        $user = new User();
-        $form = $this->createFormBuilder($user)
-            ->add('firstname', TextType:: class)
-            ->add('lastname', TextType:: class)
-            ->add('mail', EmailType:: class)
-            ->add('createdAt', DateType:: class)
-            ->add('password', TextType:: class)
-            ->add('save', SubmitType:: class, ['label' => 'S inscrire'])
-            ->getForm();
-        return $this->render('default/inscription.html.twig', [
-            'form' => $form->createView()
-        ]);
-
-        $form->handleRequest($request);
-        if ($form->isSubmitted() && $form->isValid()) {
-            $user = $form->getData();
-            $em = $this->getDoctrine()->getManager();
-            $em->persist($user);
-            $em->flush();
-            return $this->redirectToRoute('netflix');   }
-
-
-
-    }
-
-    /**
      * @Route("/films", name="films")
      */
     public function filmsAction(Request $request)
     {
         // replace this example code with whatever you need
-        //return $this->render('default/films.html.twig');
+        return $this->render('default/films.html.twig');
 
-        $em = $this->getDoctrine()->getManager();
-        $films = $em->getRepository(Film:: class)
-            ->findAll();
-        return $this->render('default/films.html.twig', [
-            'films' => $films        ]);
+
+
+//        $em = $this->getDoctrine()->getManager();
+//        $films = $em->getRepository(Film:: class)
+//            ->findAll();
+//        return $this->render('default/films.html.twig', [
+//            'films' => $films ]);
     }
 
     /**
@@ -114,7 +86,7 @@ class DefaultController extends Controller
 
             // moves the file to the directory where brochures are stored
             $file->move(
-                $this->getParameter('pictures_directory'),
+                $this->getParameter('picturesMovies_directory'),
                 $fileName
             );
 
