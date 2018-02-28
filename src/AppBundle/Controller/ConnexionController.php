@@ -22,7 +22,7 @@ use Sensio\Bundle\FrameworkExtraBundle\Configuration\Method;
 
 
 
-class DefaultController extends Controller
+class ConnexionController extends Controller
 {
     /**
      * @Route("/", name="homepage")
@@ -33,4 +33,13 @@ class DefaultController extends Controller
             'base_dir' => realpath($this->getParameter('kernel.project_dir')).DIRECTORY_SEPARATOR,
         ]);
     }
+
+    /**
+     * @Route("/connexion", name="connexion")
+     */
+    public function connexionAction(Request $request)
+    {
+        return $this->render('connexion/connexion.html.twig');
+    }
+
 }

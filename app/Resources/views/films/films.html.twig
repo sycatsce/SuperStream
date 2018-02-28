@@ -29,8 +29,11 @@
 
                     {% for film in films %}
                     <div class="movie">
-                        <figure class="movie-poster"></figure>
-                        <div class="movie-title"><a href="#">{{ film.getName() }}</a></div>
+                        <a href="{{ path('film', {'id':film.id}) }}">
+
+                            <figure class="movie-poster"><img src="{{ path('imagesViews',  {'id': film.id }) }}" alt="#"></figure>
+                            <div class="movie-title">{{ film.getName() }}</div>
+                        </a>
                     </div>
                     {% endfor %}
 

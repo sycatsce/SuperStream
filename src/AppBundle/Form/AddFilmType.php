@@ -23,6 +23,6 @@ class AddFilmType extends AbstractType
             ->add('releaseDate', DateType:: class)
             ->add('description', TextareaType:: class)
             ->add('image', FileType::class, array('label' => 'Film Picture'))
-            ->add('save', SubmitType:: class, ['label' => 'Ajouter un film']);
+            ->add('save', SubmitType:: class, ['label' => 'Enregistrer']);
     }
 }

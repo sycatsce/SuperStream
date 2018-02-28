@@ -22,7 +22,7 @@ use Sensio\Bundle\FrameworkExtraBundle\Configuration\Method;
 
 
 
-class DefaultController extends Controller
+class AccueilController extends Controller
 {
     /**
      * @Route("/", name="homepage")
@@ -32,5 +32,13 @@ class DefaultController extends Controller
         return $this->render('default/index.html.twig', [
             'base_dir' => realpath($this->getParameter('kernel.project_dir')).DIRECTORY_SEPARATOR,
         ]);
+    }
+
+    /**
+     * @Route("/index", name="accueil")
+     */
+    public function accueilAction(Request $request)
+    {
+        return $this->render('accueil/accueil.html.twig');
     }
 }
