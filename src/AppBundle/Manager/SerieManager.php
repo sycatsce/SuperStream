@@ -20,7 +20,7 @@ class SerieManager
         return $this->em->getRepository(Serie::class)->findAll();
     }
 
-    public function getSerie(int $id)
+    public function getSerie($id)
     {
         return $this->em->getRepository(Serie::class)->find($id);
     }

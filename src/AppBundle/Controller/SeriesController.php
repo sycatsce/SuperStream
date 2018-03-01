@@ -7,6 +7,7 @@ use AppBundle\Entity\Serie;
 use AppBundle\Entity\User;
 use AppBundle\Form\AddFilmType;
 use AppBundle\Form\AddSerieType;
+use AppBundle\Manager\SerieManager;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\DomCrawler\Field\TextareaFormField;
@@ -25,25 +26,13 @@ use Sensio\Bundle\FrameworkExtraBundle\Configuration\Method;
 
 class SeriesController extends Controller
 {
-    /**
-     * @Route("/", name="homepage")
-     */
-    public function indexAction(Request $request)
-    {
-        // replace this example code with whatever you need
-        return $this->render('default/index.html.twig', [
-            'base_dir' => realpath($this->getParameter('kernel.project_dir')).DIRECTORY_SEPARATOR,
-        ]);
-    }
 
     /**
      * @Route("/series", name="series")
      */
-    public function seriesAction(Request $request)
+    public function seriesAction(Request $request, SerieManager $serieManager)
     {
-        $em = $this->getDoctrine()->getManager();
-        $series = $em->getRepository(Serie:: class)
-            ->findAll();
+        $series = $serieManager->getSeries();
         return $this->render('series/series.html.twig', [
             'series' => $series ]);
     }
@@ -52,12 +41,9 @@ class SeriesController extends Controller
      * @Route("/series/serie/{id}", name="serie")
      * @Method("GET")
      */
-    public function serieAction(Request $request, $id)
+    public function serieAction(Request $request, $id, SerieManager $serieManager)
     {
-        $em = $this->getDoctrine()->getManager();
-        $serie = $em->getRepository(Serie:: class)
-            ->find($id);
-
+        $series = $serieManager->getSeries($id);
         return $this->render('series/serie.html.twig', [
             'id' => $id,
             'serie' => $serie
@@ -69,11 +55,9 @@ class SeriesController extends Controller
      * @Route("/series/serie/{id}/seriesViews", name="imagesViewsSeries")
      *
      */
-    public function imagesViewSerieAction(Request $request, $id)
+    public function imagesViewSerieAction(Request $request, $id, SerieManager $serieManager)
     {
-        $em = $this->getDoctrine()->getManager();
-        $serie = $em->getRepository(Serie:: class)
-            ->find($id);
+        $series = $serieManager->getSerie($id);
         $findPath = $this->getParameter('picturesSeries_directory') . $serie->getImage();
         return new BinaryFileResponse($findPath);
     }

@@ -25,16 +25,6 @@ use Sensio\Bundle\FrameworkExtraBundle\Configuration\Method;
 class ConnexionController extends Controller
 {
     /**
-     * @Route("/", name="homepage")
-     */
-    public function indexAction(Request $request)
-    {
-        return $this->render('default/index.html.twig', [
-            'base_dir' => realpath($this->getParameter('kernel.project_dir')).DIRECTORY_SEPARATOR,
-        ]);
-    }
-
-    /**
      * @Route("/connexion", name="connexion")
      */
     public function connexionAction(Request $request)

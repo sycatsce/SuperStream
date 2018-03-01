@@ -20,7 +20,7 @@ class SaisonManager
         return $this->em->getRepository(Saison::class)->findAll();
     }
 
-    public function getSaison(int $id)
+    public function getSaison($id)
     {
         return $this->em->getRepository(Saison::class)->find($id);
     }

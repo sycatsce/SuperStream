@@ -20,7 +20,7 @@ class CommentsManager
         return $this->em->getRepository(Comments::class)->findAll();
     }
 
-    public function getComment(int $id)
+    public function getComment($id)
     {
         return $this->em->getRepository(Comments::class)->find($id);
     }

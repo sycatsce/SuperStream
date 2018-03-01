@@ -1,5 +1,5 @@
 <?php
-  AppBundle\DataFixtures;
+namespace AppBundle\DataFixtures;
 
 use AppBundle\Entity\Film;
 use AppBundle\Entity\Comments;

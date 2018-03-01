@@ -20,7 +20,7 @@ class FilmManager
         return $this->em->getRepository(Film::class)->findAll();
     }
 
-    public function getFilm(int $id)
+    public function getFilm($id)
     {
         return $this->em->getRepository(Film::class)->find($id);
     }

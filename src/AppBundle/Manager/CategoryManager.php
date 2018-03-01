@@ -20,7 +20,7 @@ class CategoryManager
         return $this->em->getRepository(Category::class)->findAll();
     }
 
-    public function getCategory(int $id)
+    public function getCategory($id)
     {
         return $this->em->getRepository(Category::class)->find($id);
     }

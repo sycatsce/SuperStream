@@ -20,7 +20,7 @@ class UserManager
         return $this->em->getRepository(User::class)->findAll();
     }
 
-    public function getUser(int $id)
+    public function getUser($id)
     {
         return $this->em->getRepository(User::class)->find($id);
     }

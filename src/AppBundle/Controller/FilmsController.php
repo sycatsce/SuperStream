@@ -6,6 +6,7 @@ use AppBundle\Entity\Film;
 use AppBundle\Entity\Serie;
 use AppBundle\Entity\User;
 use AppBundle\Form\AddFilmType;
+use AppBundle\Manager\FilmManager;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\DomCrawler\Field\TextareaFormField;
@@ -24,25 +25,13 @@ use Sensio\Bundle\FrameworkExtraBundle\Configuration\Method;
 
 class FilmsController extends Controller
 {
-    /**
-     * @Route("/", name="homepage")
-     */
-    public function indexAction(Request $request)
-    {
-        // replace this example code with whatever you need
-        return $this->render('default/index.html.twig', [
-            'base_dir' => realpath($this->getParameter('kernel.project_dir')).DIRECTORY_SEPARATOR,
-        ]);
-    }
 
     /**
      * @Route("/films", name="films")
      */
-    public function filmsAction(Request $request)
+    public function filmsAction(Request $request, FilmManager $filmManager)
     {
-        $em = $this->getDoctrine()->getManager();
-        $films = $em->getRepository(Film:: class)
-            ->findAll();
+        $films = $filmManager->getFilms();
         return $this->render('films/films.html.twig', [
             'films' => $films ]);
     }
@@ -51,12 +40,9 @@ class FilmsController extends Controller
      * @Route("/films/film/{id}", name="film")
      * @Method("GET")
      */
-    public function filmAction(Request $request, $id)
+    public function filmAction(Request $request, $id, FilmManager $filmManager)
     {
-        $em = $this->getDoctrine()->getManager();
-        $film = $em->getRepository(Film:: class)
-            ->find($id);
-
+        $film = $filmManager->getFilm($id);
         return $this->render('films/film.html.twig', [
             'id' => $id,
             'film' => $film

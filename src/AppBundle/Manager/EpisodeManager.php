@@ -20,7 +20,7 @@ class EpisodeManager
         return $this->em->getRepository(Episode::class)->findAll();
     }
 
-    public function getEpisode(int $id)
+    public function getEpisode($id)
     {
         return $this->em->getRepository(Episode::class)->find($id);
     }
