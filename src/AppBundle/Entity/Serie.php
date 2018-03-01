@@ -45,6 +45,13 @@ class Serie
     /**
      * @var string
      *
+     * @ORM\Column(name="description", type="text")
+     */
+    private $description;
+
+    /**
+     * @var string
+     *
      * @ORM\Column(name="image", type="text")
      */
     private $image;
@@ -130,6 +137,30 @@ class Serie
     public function getReleaseDate()
     {
         return $this->releaseDate;
+    }
+
+    /**
+     * Set description
+     *
+     * @param string $description
+     *
+     * @return Serie
+     */
+    public function setDescription($description)
+    {
+        $this->description = $description;
+
+        return $this;
+    }
+
+    /**
+     * Get description
+     *
+     * @return string
+     */
+    public function getDescription()
+    {
+        return $this->description;
     }
 
     /**
