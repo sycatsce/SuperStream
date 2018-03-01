@@ -12,13 +12,14 @@ use Symfony\Component\Form\Extension\Core\Type\SubmitType;
 use Symfony\Component\Form\Extension\Core\Type\DateType;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Symfony\Component\Form\Extension\Core\Type\PasswordType;
+use Symfony\Component\Security\Core\Encoder\UserPasswordEncoderInterface;
 
 class InscriptionController extends Controller
 {
     /**
      * @Route("/user/add", name="addUser")
      */
-    public function addAction(Request $request)
+    public function addAction(Request $request, UserPasswordEncoderInterface $passwordEncoder)
     {
         $user = new User();
 
@@ -30,9 +31,12 @@ class InscriptionController extends Controller
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()){
-            $task = $form->getData();
+
+            $password = $passwordEncoder->encodePassword($user, $user->getPassword());
+            $user->setPassword($password);
+            
             $em = $this->getDoctrine()->getManager();
-            $em->persist($task);
+            $em->persist($user);
             $em->flush();
 
             return $this->redirectToRoute("/");
