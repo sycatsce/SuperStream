@@ -27,11 +27,16 @@
                 </div>
                 <div class="movie-list">
 
+                    {% for serie in series %}
+                        <div class="movie">
+                            <a href="{{ path('serie', {'id':serie.id}) }}">
 
-
-                    {% for film in films %}
-                        <p>{{ film.fistname }}</p>
+                                <figure class="movie-poster"><img src="{{ path('imagesViewsSeries',  {'id': serie.id }) }}" alt="#"></figure>
+                                <div class="movie-title">{{ serie.getName() }}</div>
+                            </a>
+                        </div>
                     {% endfor %}
+
 
 
 
