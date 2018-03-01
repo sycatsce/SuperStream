@@ -10,4 +10,6 @@ namespace AppBundle\Repository;
  */
 class FilmRepository extends \Doctrine\ORM\EntityRepository
 {
+
 }
+
