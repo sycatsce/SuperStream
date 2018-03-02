@@ -1,0 +1,32 @@
+{% extends 'default/layout.html.twig' %}
+
+
+
+{% block content %}
+    <main class="main-content">
+        <div class="container">
+            <div class="page">
+                <div class="breadcrumbs">
+                    <a href="index.html">Home</a>
+                    <span>Movie Review</span>
+                </div>
+
+
+
+
+                <div class="movie-list">
+                    {% for film in categorie.films %}
+                        <div class="movie">
+                            <a href="{{ path('film', {'id':film.id}) }}">
+
+                                <figure class="movie-poster"><img src="{{ path('imagesViews',  {'id': film.id }) }}" alt="#"></figure>
+                                <div class="movie-title">{{ film.getName() }}</div>
+                            </a>
+                        </div>
+                    {% endfor %}
+                </div> <!-- .movie-list -->
+
+            </div>
+        </div> <!-- .container -->
+    </main>
+{% endblock %}

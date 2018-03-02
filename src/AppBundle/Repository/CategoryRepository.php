@@ -10,4 +10,16 @@ namespace AppBundle\Repository;
  */
 class CategoryRepository extends \Doctrine\ORM\EntityRepository
 {
+    public function getFilmsByCategory($category) {
+
+        $qb = $this->createQueryBuilder('f')
+            ->where('film.id = film_category.film_id')
+            ->andWhere('film_category.category_id = category.id')
+            ->andWhere('category.name = category')
+            ->setParameter('category', '%' . $category . '%');
+
+        return $qb
+            ->getQuery()
+            ->getResult();
+            }
 }

@@ -35,6 +35,8 @@ class FilmsController extends Controller
     {
         $films = $filmManager->getFilms();
         $categories = $categoryManager->getCategories();
+       // $test = $categoryManager->getFilmsByCategories($categories);
+        //var_dump($test);
         return $this->render('films/films.html.twig', [
             'films' => $films,
             'categories' => $categories]);
@@ -51,18 +53,15 @@ class FilmsController extends Controller
             'id' => $id,
             'film' => $film
         ]);
-
     }
 
     /**
      * @Route("/films/film/{id}/filmsViews", name="imagesViews")
      *
      */
-    public function imagesViewAction(Request $request, $id)
+    public function imagesViewAction(Request $request, $id, FilmManager $filmManager)
     {
-        $em = $this->getDoctrine()->getManager();
-        $film = $em->getRepository(Film:: class)
-            ->find($id);
+        $film = $filmManager->getFilm($id);
         $findPath = $this->getParameter('picturesMovies_directory') . $film->getImage();
         return new BinaryFileResponse($findPath);
     }

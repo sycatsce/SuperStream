@@ -69,6 +69,11 @@ class Film
     private $comments;
 
     /**
+     * @ORM\ManyToMany(targetEntity="AppBundle\Entity\Category", inversedBy="films")
+     */
+    private $categories;
+
+    /**
      * Get id
      *
      * @return int

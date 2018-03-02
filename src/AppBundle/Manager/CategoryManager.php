@@ -24,4 +24,9 @@ class CategoryManager
     {
         return $this->em->getRepository(Category::class)->find($id);
     }
+
+    public function getFilmsByCategories($category) {
+
+        return $this->em->getRepository(Category::class)->getFilmsByCategory($category);
+    }
 }
