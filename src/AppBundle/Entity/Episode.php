@@ -35,6 +35,11 @@ class Episode
      */
     private $numero;
 
+    /**
+     * @ORM\ManyToOne(targetEntity="AppBundle\Entity\Saison", inversedBy="episode")
+     */
+    private $saison;
+
 
     /**
      * Get id

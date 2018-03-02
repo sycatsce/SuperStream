@@ -35,6 +35,15 @@ class Saison
      */
     private $nbEpisodes;
 
+    /**
+     * @ORM\ManyToOne(targetEntity="AppBundle\Entity\Serie", inversedBy="saison")
+     */
+    private $serie;
+
+    /**
+     * @ORM\OneToMany(targetEntity="AppBundle\Entity\Episode", mappedBy="saison")
+     */
+    private $episode;
 
     /**
      * Get id

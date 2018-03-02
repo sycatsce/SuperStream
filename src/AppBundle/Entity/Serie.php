@@ -56,6 +56,10 @@ class Serie
      */
     private $image;
 
+    /**
+     * @ORM\OneToMany (targetEntity="AppBundle\Entity\Saison", mappedBy="serie")
+     */
+    private $saison;
 
     /**
      * Get id

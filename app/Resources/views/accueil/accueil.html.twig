@@ -8,12 +8,10 @@
                     <div class="col-md-9">
                         <div class="slider">
                             <ul class="slides">
-                                <li><a href="#"><img src="{{ asset('Netflix/images/Vaiana.png') }}">
+                            {% for film in films %}
+                                <li><a href="{{ path('film', {'id': film.id }) }}"><img style="width:564px; height:518px; text-align:center" src="{{ path('imagesViews', {'id': film.id }) }}" alt="#">>
                                     </a></li>
-                                <li><a href="#"><img src="{{ asset('Netflix/images/expendables.png') }}">
-                                    </a></li>
-                                <li><a href="#"><img src="{{ asset('Netflix/images/Le_Casse_de_Central_Park.png') }}">
-                                    </a></li>
+                            {% endfor %}
                             </ul>
                         </div>
                     </div>
