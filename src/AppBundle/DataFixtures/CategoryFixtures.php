@@ -20,6 +20,8 @@ class CategoryFixtures extends Fixture
             'Science Fiction',
             'Policier',
             'Musical',
+            'Amour',
+            'Fantaisie',
             'Animation Japonaise'
         ];
         foreach ($categories as $category){

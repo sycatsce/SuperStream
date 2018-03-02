@@ -29,6 +29,11 @@ class Category
     private $name;
 
     /**
+     * @ORM\ManyToMany(targetEntity="AppBundle\Entity\Film", mappedBy="category")
+     */
+    private $films;
+
+    /**
      * Get id
      *
      * @return int
@@ -60,6 +65,22 @@ class Category
     public function getName()
     {
         return $this->name;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getFilms()
+    {
+        return $this->films;
+    }
+
+    /**
+     * @param mixed $films
+     */
+    public function setFilms($films)
+    {
+        $this->films = $films;
     }
 }
 
