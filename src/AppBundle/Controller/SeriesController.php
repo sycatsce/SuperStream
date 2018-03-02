@@ -63,7 +63,7 @@ class SeriesController extends Controller
     }
 
     /**
-     * @Route("/series/add", name="addSerie")
+     * @Route("admin/series/add", name="addSerie")
      */
     public function addSeriesAction(Request $request)
     {

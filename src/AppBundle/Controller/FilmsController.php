@@ -64,7 +64,7 @@ class FilmsController extends Controller
     }
 
     /**
-     * @Route("/films/add", name="addFilm")
+     * @Route("admin/films/add", name="addFilm")
      */
     public function addFilmsAction(Request $request)
     {

@@ -61,9 +61,9 @@ class User implements UserInterface
     /**
      * @var int
      * 
-     * @ORM\Column(name="idAdmin", type="text")
+     * @ORM\Column(name="isAdmin", type="text")
      */
-    private $idAdmin;
+    private $isAdmin;
 
 
     /**
@@ -203,7 +203,7 @@ class User implements UserInterface
      */
     public function getIsAdmin()
     {
-        return $this->isAdmin();
+        return $this->isAdmin;
     }
 
     /** Set isAdmin
@@ -219,7 +219,8 @@ class User implements UserInterface
 
     public function getRoles()
     {
-        return ['ROLE_USER'];
+        if ($this->getIsAdmin() === 1) { return ['ROLE_ADMIN']; }
+        else { return ['ROLE_USER']; }
     }
 
     public function getSalt()

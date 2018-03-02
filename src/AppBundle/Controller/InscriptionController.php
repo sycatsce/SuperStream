@@ -26,6 +26,7 @@ class InscriptionController extends Controller
         $dt = new \DateTime();
         $dt->format('Y-m-d H:i:s');
         $user->setCreatedAt( $dt );
+        $user->setIsAdmin(0);
 
         $form = $this->createForm(AddUserType::class, $user);
         $form->handleRequest($request);
