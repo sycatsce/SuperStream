@@ -17,10 +17,20 @@ class SecurityController extends Controller
     {
         $error = $authUtils->getLastAuthenticationError();
         $lastUsername = $authUtils->getLastUsername();
+        $user = $this->getUser();
 
         return $this->render('security/login.html.twig', [
             'last_username' => $lastUsername,
-            'error' => $error
+            'error' => $error,
+            'user' => $user
         ]);
+    }
+
+    /**
+     * @Route("/sign-out", name="logout")
+     */
+    public function logoutAction()
+    {
+        
     }
 }
