@@ -43,7 +43,7 @@ class SeriesController extends Controller
      */
     public function serieAction(Request $request, $id, SerieManager $serieManager)
     {
-        $series = $serieManager->getSeries($id);
+        $serie = $serieManager->getSerie($id);
         return $this->render('series/serie.html.twig', [
             'id' => $id,
             'serie' => $serie
@@ -57,7 +57,7 @@ class SeriesController extends Controller
      */
     public function imagesViewSerieAction(Request $request, $id, SerieManager $serieManager)
     {
-        $series = $serieManager->getSerie($id);
+        $serie = $serieManager->getSerie($id);
         $findPath = $this->getParameter('picturesSeries_directory') . $serie->getImage();
         return new BinaryFileResponse($findPath);
     }

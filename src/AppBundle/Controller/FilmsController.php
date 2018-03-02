@@ -7,11 +7,13 @@ use AppBundle\Entity\Serie;
 use AppBundle\Entity\User;
 use AppBundle\Form\AddFilmType;
 use AppBundle\Manager\FilmManager;
+use AppBundle\Manager\CategoryManager;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\DomCrawler\Field\TextareaFormField;
 use Symfony\Component\Form\Extension\Core\Type\TextareaType;
 use Symfony\Component\HttpFoundation\BinaryFileResponse;
+use Symfony\Component\HttpFoundation\File\UploadedFile;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\Form\Extension\Core\Type\EmailType;
 use Symfony\Component\Form\Extension\Core\Type\SubmitType;
@@ -29,11 +31,13 @@ class FilmsController extends Controller
     /**
      * @Route("/films", name="films")
      */
-    public function filmsAction(Request $request, FilmManager $filmManager)
+    public function filmsAction(Request $request, FilmManager $filmManager, CategoryManager $categoryManager)
     {
         $films = $filmManager->getFilms();
+        $categories = $categoryManager->getCategories();
         return $this->render('films/films.html.twig', [
-            'films' => $films ]);
+            'films' => $films,
+            'categories' => $categories]);
     }
 
     /**
@@ -74,6 +78,7 @@ class FilmsController extends Controller
 
         $form->handleRequest($request);
         if ($form->isSubmitted() && $form->isValid()) {
+            /** @var UploadedFile $file */
             $file = $film->getImage();
 
             $fileName = $this->generateUniqueFileName().'.'.$file->guessExtension();
@@ -85,6 +90,24 @@ class FilmsController extends Controller
             );
 
             $film->setImage($fileName);
+
+
+//video
+
+            /** @var UploadedFile $video */
+            $video = $film->getVideo();
+            $videoName = $this->generateUniqueFileName().'.'.$video->guessExtension();
+
+            $video->move(
+                $this->getParameter('videosMovies_directory'),
+                $videoName
+            );
+
+            $film->setVideo('testy');
+
+
+
+
 
             $film = $form->getData();
             $em = $this->getDoctrine()->getManager();

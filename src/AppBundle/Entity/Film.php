@@ -52,6 +52,13 @@ class Film
     /**
      * @var string
      *
+     * @ORM\Column(name="video", type="text")
+     */
+    private $video;
+
+    /**
+     * @var string
+     *
      * @ORM\Column(name="image", type="text")
      */
     private $image;
@@ -61,7 +68,6 @@ class Film
      */
     private $comments;
 
-    
     /**
      * Get id
      *
@@ -232,4 +238,40 @@ class Film
     {
         return $this->comments;
     }
+
+    /**
+     * @return string
+     */
+    public function getVideo()
+    {
+        return $this->video;
+    }
+
+    /**
+     * @param string $video
+     */
+    public function setVideo($video)
+    {
+        $this->video = $video;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getCategories()
+    {
+        return $this->categories;
+    }
+
+    /**
+     * @param mixed $categories
+     */
+    public function setCategories($categories)
+    {
+        $this->categories = $categories;
+    }
+
+
+
+
 }
