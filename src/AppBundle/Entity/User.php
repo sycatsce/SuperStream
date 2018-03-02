@@ -58,6 +58,13 @@ class User implements UserInterface
      */
     private $password;
 
+    /**
+     * @var int
+     * 
+     * @ORM\Column(name="idAdmin", type="text")
+     */
+    private $idAdmin;
+
 
     /**
      * Get id
@@ -187,6 +194,27 @@ class User implements UserInterface
     public function getPassword()
     {
         return $this->password;
+    }
+
+    /**
+     * Get isAdmin
+     * 
+     * @return int
+     */
+    public function getIsAdmin()
+    {
+        return $this->isAdmin();
+    }
+
+    /** Set isAdmin
+     * 
+     * @return User
+     */
+    public function setIsAdmin($isAdmin)
+    {
+        $this->isAdmin = $isAdmin;
+
+        return $this;
     }
 
     public function getRoles()
