@@ -4,6 +4,7 @@ parameters:
     #parameter_name: value
     picturesMovies_directory: '%kernel.project_dir%/upload/MoviesPictures/'
     picturesSeries_directory: '%kernel.project_dir%/upload/SeriesPictures/'
+    videosMovies_directory: '%kernel.project_dir%/upload/MoviesVideos/'
 
 
 services:
